@@ -56,7 +56,11 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+Type 1 SCD will simply override the old addresses when the customer updates them, leaving only the most recently updated in memory:
+It will use customer_id, address information (strret_address, city, country, postal_code), and date updated
+
+Type 2 SCD will keep every address a customer had on file, but only the most recent one will be active
+It will use the same parameters as the other table, but adding a column indicating if it's active (bool), and tracking each time it was updated.
 ```
 
 ***
